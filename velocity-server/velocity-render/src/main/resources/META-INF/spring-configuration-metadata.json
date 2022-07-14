@@ -22,7 +22,7 @@
     {
       "name": "velocity.render.layout-url",
       "type": "java.lang.String",
-      "description": "Layout used to the render the views",
+      "description": "Layout used the render the views",
       "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
     },
     {
