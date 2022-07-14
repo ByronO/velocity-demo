@@ -1,0 +1,41 @@
+{
+  "groups": [
+    {
+      "name": "velocity.render",
+      "type": "com.cvex.velocity.render.config.VelocityRenderProperties",
+      "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "velocity.render.prefix",
+      "type": "java.lang.String",
+      "description": "Path for the Velocity Template Views",
+      "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    },
+    {
+      "name": "velocity.render.suffix",
+      "type": "java.lang.String",
+      "description": "Templates extension",
+      "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    },
+    {
+      "name": "velocity.render.layout-url",
+      "type": "java.lang.String",
+      "description": "Layout used to the render the views",
+      "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    },
+    {
+      "name": "velocity.render.screen-content-key",
+      "type": "java.lang.String",
+      "description": "Key used in the Templates to place the view for rendering",
+      "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    },
+    {
+      "name": "velocity.render.use-cache",
+      "type": "java.lang.String",
+      "description": "Enables Cache options",
+      "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    }
+  ]
+}
