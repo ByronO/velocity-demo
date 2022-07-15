@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -20,15 +21,17 @@ public class TutorialController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcomePage() {
-        return "index";
+    public ModelAndView welcomePage() {
+        return new ModelAndView("index");
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String listTutorialsPage(Model model) {
+    public ModelAndView listTutorialsPage(Model model) {
         List<Tutorial> list = tutService.listTutorials();
         model.addAttribute("tutorials", list);
-        return "list";
+//        model.addAttribute("layout", "xxx.vm");
+
+        return new ModelAndView("list");
     }
 
 }

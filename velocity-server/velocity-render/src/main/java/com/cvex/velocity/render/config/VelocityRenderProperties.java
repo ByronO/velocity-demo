@@ -14,7 +14,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Validated
-@Configuration
 @ConfigurationProperties(prefix = "velocity.render")
 public class VelocityRenderProperties implements Validator {
     @NotBlank
