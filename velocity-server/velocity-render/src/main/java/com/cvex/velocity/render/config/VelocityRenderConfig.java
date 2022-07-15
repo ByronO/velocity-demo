@@ -2,26 +2,23 @@ package com.cvex.velocity.render.config;
 
 import com.cvex.velocity.render.view.VelocityLayoutView;
 import com.cvex.velocity.render.resolver.VelocityLayoutViewResolver;
+import com.cvex.velocity.render.writer.VelocityLayoutViewWriter;
 import com.cvex.velocity.render.writer.VelocityViewWriter;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.spring.VelocityEngineFactoryBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
-import org.springframework.util.Assert;
 import org.springframework.web.servlet.ViewResolver;
 
-import javax.validation.Valid;
 import java.util.Optional;
 import java.util.Properties;
 
 @Order(1)
 @Configuration
-@EnableConfigurationProperties(VelocityRenderProperties.class)
-@Import(VelocityViewWriter.class)
+@EnableConfigurationProperties({VelocityRenderProperties.class, VelocityWriterProperties.class})
 public class VelocityRenderConfig {
 
     @Bean
@@ -53,5 +50,11 @@ public class VelocityRenderConfig {
     @Bean
     public VelocityEngine velocityEngine(VelocityEngineFactoryBean velocityEngineFactoryBean) {
         return velocityEngineFactoryBean.getObject();
+    }
+
+    @Bean
+    public VelocityLayoutViewWriter velocityLayoutViewWriter(VelocityEngine velocityEngine, VelocityRenderProperties renderProperties,
+                                                             VelocityWriterProperties writerProperties) {
+        return new VelocityLayoutViewWriter(velocityEngine, renderProperties, writerProperties);
     }
 }

@@ -47,6 +47,12 @@
       "type": "java.lang.String",
       "description": "Static files output path",
       "sourceType": "com.cvex.velocity.render.config.VelocityWriterProperties"
+    },
+    {
+      "name": "velocity.writer.output-suffix",
+      "type": "java.lang.String",
+      "description": "Extension of the output files",
+      "sourceType": "com.cvex.velocity.render.config.VelocityWriterProperties"
     }
   ]
 }
