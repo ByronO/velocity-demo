@@ -2,11 +2,14 @@ package com.cvex.velocity.render.config;
 
 import com.cvex.velocity.render.view.VelocityLayoutView;
 import com.cvex.velocity.render.resolver.VelocityLayoutViewResolver;
+import com.cvex.velocity.render.writer.VelocityViewWriter;
+import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.spring.VelocityEngineFactoryBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.util.Assert;
 import org.springframework.web.servlet.ViewResolver;
@@ -18,6 +21,7 @@ import java.util.Properties;
 @Order(1)
 @Configuration
 @EnableConfigurationProperties(VelocityRenderProperties.class)
+@Import(VelocityViewWriter.class)
 public class VelocityRenderConfig {
 
     @Bean
@@ -34,7 +38,7 @@ public class VelocityRenderConfig {
     }
 
     @Bean
-    public VelocityEngineFactoryBean velocityEngine() {
+    public VelocityEngineFactoryBean velocityEngineFactory() {
         final VelocityEngineFactoryBean velocityEngineFactoryBean = new VelocityEngineFactoryBean();
 
         final Properties properties = new Properties();
@@ -44,5 +48,10 @@ public class VelocityRenderConfig {
         velocityEngineFactoryBean.setVelocityProperties(properties);
 
         return velocityEngineFactoryBean;
+    }
+
+    @Bean
+    public VelocityEngine velocityEngine(VelocityEngineFactoryBean velocityEngineFactoryBean) {
+        return velocityEngineFactoryBean.getObject();
     }
 }
