@@ -4,6 +4,11 @@
       "name": "velocity.render",
       "type": "com.cvex.velocity.render.config.VelocityRenderProperties",
       "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    },
+    {
+      "name": "velocity.writer",
+      "type": "com.cvex.velocity.render.config.VelocityWriterProperties",
+      "sourceType": "com.cvex.velocity.render.config.VelocityWriterProperties"
     }
   ],
   "properties": [
@@ -36,6 +41,12 @@
       "type": "java.lang.String",
       "description": "Enables Cache options",
       "sourceType": "com.cvex.velocity.render.config.VelocityRenderProperties"
+    },
+    {
+      "name": "velocity.writer.output-path",
+      "type": "java.lang.String",
+      "description": "Static files output path",
+      "sourceType": "com.cvex.velocity.render.config.VelocityWriterProperties"
     }
   ]
 }
