@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -16,13 +15,13 @@ import java.util.List;
 @AllArgsConstructor
 public class TemplateConfigurationController {
 
-    private final String SESSION_CONFIG = "config";
+    public static final String SESSION_CONFIG = "config";
     @Value("#{'${render.template.list}'.split(',')}")
     private List<String> templates;
 
     @GetMapping("list")
     public List<String> getCurrentTemplates() {
-        return templates;
+        return this.templates;
     }
 
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,12 +33,7 @@ public class TemplateConfigurationController {
 
     @GetMapping("/")
     public ResponseEntity<TemplateConfig> getCurrentConfig(HttpSession httpSession) {
-
         final TemplateConfig config = (TemplateConfig) httpSession.getAttribute(SESSION_CONFIG);
-
-//        if (config == null) {
-//
-//        }
 
         return ResponseEntity.ok(config);
     }
