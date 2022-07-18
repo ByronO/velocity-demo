@@ -1,18 +1,39 @@
+import React, { useState } from 'react';
 import FormComponent from '../../components/higher-level/FormComponent/FormComponent';
 import PreviewComponent from '../../components/higher-level/PreviewComponent/PreviewComponent';
 import HeaderComponent from '../../layouts/Header/HeaderComponent';
 
 function HomePage() {
+  const [source, setSource] = useState('http://localhost:8088/templates/template1/index/' + Date.now());
+
+  const handleRequest = ( tutorial) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(tutorial)
+    }
+
+    const request = fetch('http://localhost:8088/templates/configuration/', requestOptions);
+
+    request.then(response => {
+      setSource('http://localhost:8088/templates/template1/index/' + Date.now());
+      console.log(response)
+    });
+
+    console.log(tutorial.brandName);
+    
+  }
+
 
   return (
     <div className='App'>
       <HeaderComponent />
       <div className="row">
         <div className='col-sm-6'>
-          <FormComponent title="Test props"/>
+          <FormComponent handleRequestFunction={handleRequest}/>
         </div>
         <div className='col-sm-6'>
-          <PreviewComponent source="http://localhost:8088/templates/template1/index" />
+          <PreviewComponent source={source}/>
         </div>
       </div>
     </div>

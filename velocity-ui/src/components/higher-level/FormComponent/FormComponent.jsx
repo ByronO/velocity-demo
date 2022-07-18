@@ -2,36 +2,36 @@ import React, { useState } from 'react';
 import './FormComponent.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function FormComponent() {
-  const [title, setTitle] = useState('');
+function FormComponent( props ) {
+  const [brandName, setBrandName] = useState('');
   const [desc, setDesc] = useState('');
   const [author, setAuthor] = useState('');
 
   const [tutorial, setTutorial] = useState({
-    title: '',
+    brandName: '',
     desc: '',
     author: ''
   });
 
   const handlePreviewRequest = () => {
-    console.log(title, desc, author);
+    console.log(brandName, desc, author);
 
     const newTutorial = {...tutorial};
 
-    newTutorial.title = title;
+    newTutorial.brandName = brandName;
     newTutorial.desc = desc;
     newTutorial.author = author;
 
     setTutorial(newTutorial);
-    
-    console.log(tutorial)
+
+    props.handleRequestFunction(newTutorial);
 
   }
 
   return(
     <div className="FormComponent">
-      <input value={title} 
-            onChange={e => setTitle(e.target.value)} 
+      <input value={brandName} 
+            onChange={e => setBrandName(e.target.value)} 
             className='form-control' 
             type={'text'} 
             placeholder='Title' 
