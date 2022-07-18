@@ -9,6 +9,7 @@ function HomePage() {
   const handleRequest = ( tutorial) => {
     const requestOptions = {
       method: 'POST',
+	  credentials : 'include', // to send HTTP only cookies
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(tutorial)
     }
