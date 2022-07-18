@@ -12,7 +12,7 @@ function HomePage() {
           <FormComponent title="Test props"/>
         </div>
         <div className='col-sm-6'>
-          <PreviewComponent source="http://www.test.cvex.com/" />
+          <PreviewComponent source="http://localhost:8088/templates/template1/index" />
         </div>
       </div>
     </div>

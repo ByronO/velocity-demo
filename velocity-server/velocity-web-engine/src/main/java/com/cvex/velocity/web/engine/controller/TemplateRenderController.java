@@ -14,9 +14,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/templates")
 public class TemplateRenderController {
 
-    @GetMapping(value = {"{template}/index"})
-    public ModelAndView index(@PathVariable(value = "template") String template, Model model, HttpSession session) {
-        String templatePath = "%s/index".formatted(template);
+    @GetMapping(value = {"{template}/{view}"})
+    public ModelAndView renderView(@PathVariable(value = "template") String template, @PathVariable("view") String view, Model model, HttpSession session) {
+        String templatePath = "%s/%s".formatted(template, view);
 
         final TemplateConfig templateConfig = (TemplateConfig) session.getAttribute(TemplateConfigurationController.SESSION_CONFIG);
 
@@ -26,3 +26,5 @@ public class TemplateRenderController {
         return new ModelAndView(templatePath);
     }
 }
+
+
