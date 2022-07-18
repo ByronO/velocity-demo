@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Spring with Velocity</title>
+</head>
+<body>
+  <div style="background: #9eb72d; height: 80px; padding: 5px;">
+    <div style="float: left">
+      <h1>
+        #if($template.brandName)
+          $template.brandName
+        #else
+          My Brand
+        #end
+      </h1>
+    </div>
+  </div>
+
+  <div>
+    <!-- View index.vm is inserted here -->
+      $screen_content
+  </div>
+
+  <div style="background: #9eb72d; text-align: center; padding: 5px; margin-top: 10px;">
+    @Copyright CVEX
+  </div>
+</body>
+</html>
