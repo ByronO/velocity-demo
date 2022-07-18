@@ -9,7 +9,7 @@ function HomePage() {
   const handleRequest = ( tutorial) => {
     const requestOptions = {
       method: 'POST',
-	  credentials : 'include', // to send HTTP only cookies
+	    credentials : 'include', // to send HTTP only cookies
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(tutorial)
     }
@@ -20,18 +20,31 @@ function HomePage() {
       setSource('http://localhost:8088/templates/template1/index/' + Date.now());
       console.log(response)
     });
-
-    console.log(tutorial.brandName);
-    
   }
 
+  const handleExport = () => {
+    const requestOptions = {
+      method: 'POST',
+	    credentials : 'include', // to send HTTP only cookies
+      headers: {'Content-Type':'application/json'},
+    }
+
+    const request = fetch('http://localhost:8088/templates/configuration/export', requestOptions);
+    request.then(response => {
+      console.log(response)
+    });
+
+  }
 
   return (
     <div className='App'>
       <HeaderComponent />
       <div className="row">
         <div className='col-sm-6'>
-          <FormComponent handleRequestFunction={handleRequest}/>
+          <FormComponent 
+            handleRequestFunction={handleRequest}
+            handleExportRequestFunction={handleExport}
+          />
         </div>
         <div className='col-sm-6'>
           <PreviewComponent source={source}/>

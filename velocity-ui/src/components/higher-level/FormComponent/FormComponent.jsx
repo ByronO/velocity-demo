@@ -14,7 +14,6 @@ function FormComponent( props ) {
   });
 
   const handlePreviewRequest = () => {
-    console.log(brandName, desc, author);
 
     const newTutorial = {...tutorial};
 
@@ -26,6 +25,10 @@ function FormComponent( props ) {
 
     props.handleRequestFunction(newTutorial);
 
+  }
+
+  const handleExportRequest = () => {
+    props.handleExportRequestFunction();
   }
 
   return(
@@ -48,6 +51,7 @@ function FormComponent( props ) {
             placeholder='Author' />
       
       <button className='btn btn-primary' onClick={handlePreviewRequest}>Preview</button>
+      <button className='btn btn-primary' onClick={handleExportRequest}>Export</button>
     </div>
   );  
 }
